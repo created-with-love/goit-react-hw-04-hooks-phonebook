@@ -1,0 +1,89 @@
+.search__contact {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  list-style: circle;
+  /* align-items: baseline; */
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  padding: 7px 5px 7px 5px;
+  max-width: 100%;
+  margin: o auto o auto;
+}
+
+.search__contact:not(:last-child) {
+  margin-bottom: 3px;
+  border-bottom: 1px solid gray;
+}
+
+.search__label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.search__button {
+  margin: 5px 0 5px 10px;
+  border: 1px solid rgb(184, 11, 11);
+  box-shadow: 0.7px 0.7px 0.75px rgb(173, 172, 172);
+  border-radius: 6px;
+  background-color: rgb(246, 190, 190);
+  padding: 3px 10px 3px 10px;
+
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 250ms ease-in;
+}
+
+.search__button:hover {
+  cursor: pointer;
+  background-color: rgba(251, 147, 50, 0.719);
+  border: 1px solid rgba(251, 147, 50, 0.719);
+}
+
+.list {
+  width: 100%;
+  max-width: 100%;
+  background-color: rgba(251, 251, 251, 0.9);
+  margin-top: 8px;
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.list__ul {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.trash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(7, 1, 1);
+  width: 27px;
+  height: 27px;
+  border: 1px solid black;
+  border-radius: 50%;
+  transition: all 250ms ease-in;
+}
+
+.trash:hover {
+  cursor: pointer;
+  background-color: rgba(236, 143, 143, 0.5);
+}
+
+@media (max-width: 385px) {
+  .search__contact {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 475px) {
+  .list {
+    width: 400px;
+  }
+}
