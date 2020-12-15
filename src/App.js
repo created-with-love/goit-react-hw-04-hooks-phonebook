@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import dataFromServer from './data/contacts.json';
 import Form from './components/Form';
 import Section from './components/Section';
 import Contacts from './components/Contacts';
 import Filter from './components/Filter';
-import { v4 as uuidv4 } from 'uuid';
+import useLocalStorage from './hooks/useLocalStorage';
 
 function App() {
-  const [contacts, setContacts] = useState(
-    JSON.parse(window.localStorage.getItem('contacts')) || dataFromServer,
-  );
+  const [contacts, setContacts] = useLocalStorage('contacts', dataFromServer);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-
-    // при полной очистке контактов добавляю стандартный массив.
-    // при необходимости можно удалить
-    const localstorageArrayLength =
-      JSON.parse(window.localStorage.getItem('contacts')).length === 0;
-    if (localstorageArrayLength) {
-      setContacts(dataFromServer);
-    }
-  }, [contacts]);
 
   const validateContact = (data, contacts) => {
     if (contacts.some(({ name }) => name === data.name)) {
