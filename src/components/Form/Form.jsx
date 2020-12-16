@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, memo } from 'react';
 import s from './Form.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -82,4 +82,4 @@ function Form({ onSubmit }) {
   );
 }
 
-export default Form;
+export default memo(Form);

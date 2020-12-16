@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import dataFromServer from './data/contacts.json';
 import Form from './components/Form';
@@ -35,14 +35,15 @@ function App() {
     setFilter(e.currentTarget.value);
   };
 
-  const getFiltredContacts = contacts => {
-    const lowerCaseFilter = filter.toLowerCase();
-    return contacts.filter(person =>
-      person.name.toLowerCase().includes(lowerCaseFilter),
-    );
-  };
-
-  const filteredContacts = getFiltredContacts(contacts);
+  const filteredContacts = useMemo(() => {
+    const getFiltredContacts = contacts => {
+      const lowerCaseFilter = filter.toLowerCase();
+      return contacts.filter(person =>
+        person.name.toLowerCase().includes(lowerCaseFilter),
+      );
+    };
+    return getFiltredContacts(contacts);
+  }, [contacts, filter]);
 
   return (
     <>
